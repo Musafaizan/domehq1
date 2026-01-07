@@ -1,0 +1,138 @@
+/* ===== MODAL ROOT ===== */
+.journey-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+/* Overlay behind modal */
+.journey-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/* Modal content box */
+.journey-modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 450px;
+  z-index: 10000;
+  
+}
+
+/* ===== FORM CARD ===== */
+.contact-card {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-radius: 2rem;
+  padding: 1.8rem 2rem;
+  box-shadow: 0 8px 24px var(--card-shadow);
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Title & subtitle */
+.contact-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.contact-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+/* Form fields */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  border: 2px solid var(--card-border);
+  border-radius: 0.6rem;
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 2px rgba(255,0,0,0.15);
+  outline: none;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Buttons */
+.submit-btn,
+.back-btn {
+  background-color: var(--accent-red);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.8rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover,
+.back-btn:hover {
+  background-color: var(--accent-red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255,0,0,0.18);
+}
+
+.submit-btn .arrow,
+.back-btn .arrow {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .arrow,
+.back-btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .journey-modal-content { max-width: 90%; }
+  .contact-card { padding: 1.5rem; }
+  .contact-title { font-size: 1.6rem; }
+  .contact-subtitle { font-size: 0.9rem; }
+  .form-group input, .form-group textarea { font-size: 0.85rem; padding: 0.6rem 0.8rem; }
+  .submit-btn, .back-btn { font-size: 0.85rem; padding: 0.6rem 1.5rem; }
+}
+
+
