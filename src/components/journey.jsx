@@ -7,52 +7,83 @@ export default function Journey({ onClose }) {
     return null;
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    alert("Form submitted! (Add your submission logic)");
+  };
+
   return (
     <div className="journey-modal-root">
-      {/* Overlay */}
+      {/* Dark overlay */}
       <div className="journey-overlay" onClick={onClose}></div>
 
       {/* Modal content */}
       <div className="journey-modal-content">
         <div className="contact-card">
+          {/* Close button */}
+          <button className="close-btn" onClick={onClose} aria-label="Close">
+            ×
+          </button>
+
           <h2 className="contact-title">Start Your Journey</h2>
           <p className="contact-subtitle">
             Tell us about yourself and your business idea — we'll handle the rest.
           </p>
 
-          <form className="form">
+          <form className="form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>Full Name</label>
-              <input type="text" placeholder="John Doe" required />
+              <label htmlFor="name">Full Name</label>
+              <input
+                id="name"
+                type="text"
+                placeholder="John Doe"
+                required
+                autoComplete="name"
+              />
             </div>
 
             <div className="form-group">
-              <label>Email</label>
-              <input type="email" placeholder="john@example.com" required />
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                placeholder="john@example.com"
+                required
+                autoComplete="email"
+              />
             </div>
 
             <div className="form-group">
-              <label>Phone</label>
-              <input type="tel" placeholder="+1 (555) 123-4567" />
+              <label htmlFor="phone">Phone (optional)</label>
+              <input
+                id="phone"
+                type="tel"
+                placeholder="+1 (555) 123-4567"
+                autoComplete="tel"
+              />
             </div>
 
             <div className="form-group">
-              <label>Your Business Idea</label>
-              <textarea rows="4" placeholder="Describe your startup vision..." required />
+              <label htmlFor="idea">Your Business Idea</label>
+              <textarea
+                id="idea"
+                rows="5"
+                placeholder="Describe your startup vision in detail..."
+                required
+              />
             </div>
 
             <div className="button-group">
               <button type="submit" className="submit-btn">
-                Submit <span className="arrow">→</span>
+                Submit Application
+                <span className="arrow">→</span>
               </button>
 
               <button
                 type="button"
                 className="back-btn"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onClose();
-                }}
+                onClick={onClose}
               >
                 Back
               </button>
@@ -63,3 +94,4 @@ export default function Journey({ onClose }) {
     </div>
   );
 }
+
