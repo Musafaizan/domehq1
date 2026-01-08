@@ -8,6 +8,7 @@
   padding: 1rem 2rem;
   font-family: 'Arial', sans-serif;
   height: 60px;
+  z-index: 11232;
   position: fixed;
   top: 0;
   left: 0;

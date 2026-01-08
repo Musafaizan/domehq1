@@ -6,7 +6,7 @@ import { FaLaptopCode, FaRobot,FaHeadset,FaBullseye,FaEye} from 'react-icons/fa'
 export default function About() {
   return (
     <>
-      
+
 
 <section className="about-us-section">
       <div className="about-content">
@@ -21,13 +21,13 @@ export default function About() {
         </p>
 
         <p className="main-description">
-          Dome is a Qatar-based AI and software ecosystem built to give ideas weight. 
-          We believe innovation should be accessible — not limited by capital, connections, or circumstance. 
+          Dome is a Qatar-based AI and software ecosystem built to give ideas weight.
+          We believe innovation should be accessible — not limited by capital, connections, or circumstance.
           Dome provides the tools, structure, and intelligence to turn ambition into action.
         </p>
 
         <p className="closing-text">
-          From concept to creation, Dome helps entrepreneurs, creators, and businesses launch startups, 
+          From concept to creation, Dome helps entrepreneurs, creators, and businesses launch startups,
           build digital products, and create new income streams — all within one connected ecosystem.
         </p>
       </div>
