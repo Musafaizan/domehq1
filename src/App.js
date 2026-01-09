@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import PrivateRoute from "./components/PrivateRoute";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -12,11 +14,12 @@ import About from "./components/about";
 import Footer from "./components/footer";
 import Journeny from "./components/journey";
 import Login from "./components/login";
+import Pricing from "./components/Pricing";
 
 // Theme CSS
 import "./theme.css";
 
-// HomePage component with all sections
+// HomePage component with all sections - PUBLIC
 function HomePage() {
   return (
     <>
@@ -32,7 +35,7 @@ function HomePage() {
   );
 }
 
-export default function App() {
+function AppContent() {
   const [theme, setTheme] = useState("dark");
   const location = useLocation();
 
@@ -58,25 +61,42 @@ export default function App() {
       const sectionId = location.hash.replace("#", "");
       const section = document.getElementById(sectionId);
       if (section) {
-        // Scroll with offset so section isn't at the very top
-        const navbarHeight = 80; // Adjust this to your navbar height
+        const navbarHeight = 80;
         const sectionTop = section.offsetTop - navbarHeight;
         window.scrollTo({ top: sectionTop, behavior: "smooth" });
       }
     }
   }, [location]);
 
+  const showNavbar = location.pathname !== "/login";
+
   return (
     <>
-      <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
+      {showNavbar && <Navbar toggleTheme={toggleTheme} currentTheme={theme} />}
 
       <Routes>
-        {/* Main homepage with all sections */}
+        {/* Public Routes */}
         <Route path="/" element={<HomePage />} />
-
-        {/* Separate login page - only login component, no other sections */}
         <Route path="/login" element={<Login />} />
+        
+        {/* Protected Routes */}
+        <Route 
+          path="/pricing" 
+          element={
+            <PrivateRoute>
+              <Pricing />
+            </PrivateRoute>
+          } 
+        />
       </Routes>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
